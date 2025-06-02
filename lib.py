@@ -88,7 +88,9 @@ def get_vector(pt):
     Returns:
         Vec: The field vector at the given point.
     """
-    return Vec.normalized(Vec(math.cos(pt.x), math.sin(pt.y))) * 10
+    x = pt.x - pt.y
+    y = pt.x
+    return Vec.normalized(Vec(x, y)) * 10
 
 def get_field():
     '''draw vector using processing, at i*10 and j*10 to fill in 800x600 window'''
@@ -100,13 +102,13 @@ def get_field():
 
     return field
 
-def draw_vector(x1, y1, x2, y2, head_size=3):
+def draw_vector(x1, y1, x2, y2, head_size=7):
     # Draw the shaft
     py5.line(x1, y1, x2, y2)
     # Calculate angle of the arrow
     angle = math.atan2(y2 - y1, x2 - x1)
     # Calculate points for the arrowhead lines
-    arrow_angle = math.radians(30)  # 30 degree arrowhead
+    arrow_angle = math.radians(15)  # 30 degree arrowhead
     x3 = x2 - head_size * math.cos(angle - arrow_angle)
     y3 = y2 - head_size * math.sin(angle - arrow_angle)
     x4 = x2 - head_size * math.cos(angle + arrow_angle)

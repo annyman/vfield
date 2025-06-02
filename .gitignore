@@ -1,2 +1,4 @@
 field.py
 .venv
+__pycache__
+*.pyc
