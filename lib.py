@@ -88,9 +88,9 @@ def get_vector(pt):
     Returns:
         Vec: The field vector at the given point.
     """
-    x = pt.x - pt.y
-    y = pt.x
-    return Vec.normalized(Vec(x, y)) * 10
+    x = math.sin(Vec.magnitude(pt))
+    y = Vec.magnitude(pt)
+    return Vec(x, y) * 10
 
 def get_field():
     '''draw vector using processing, at i*10 and j*10 to fill in 800x600 window'''

@@ -19,6 +19,4 @@ def draw():
             y1 = y0 + vec[1]
             draw_vector(x0, y0, x1, y1)
 
-
-
 py5.run_sketch()
