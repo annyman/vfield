@@ -78,6 +78,9 @@ class Vec:
         """
         return Vec(float(matrix[0, 0]), float(matrix[1, 0]))
 
+res = Vec(1920, 1080)
+scale = 20
+
 def get_vector(pt):
     """
     Get the field vector at a given point.
@@ -88,27 +91,28 @@ def get_vector(pt):
     Returns:
         Vec: The field vector at the given point.
     """
-    x = math.sin(Vec.magnitude(pt))
-    y = Vec.magnitude(pt)
-    return Vec(x, y) * 10
+    x = math.sin(pt.x)
+    y = math.cos(pt.y)
+    return Vec.normalized(Vec(x, y)) * scale
 
 def get_field():
     '''draw vector using processing, at i*10 and j*10 to fill in 800x600 window'''
-    field = np.empty((80, 60), dtype=object)
+    field = np.empty((res.x//scale, res.y//scale), dtype=object)
 
     for i in range(field.shape[0]):
         for j in range(field.shape[1]):
-            field[i, j] = get_vector(Vec(i / 10, j / 10)).to_tuple()
+            field[i, j] = get_vector(Vec(i / scale, j / scale)).to_tuple()
 
     return field
 
-def draw_vector(x1, y1, x2, y2, head_size=7):
+def draw_vector(x1, y1, x2, y2, head_size=10):
+    #py5.stroke(255, 0, 0)
     # Draw the shaft
     py5.line(x1, y1, x2, y2)
     # Calculate angle of the arrow
     angle = math.atan2(y2 - y1, x2 - x1)
     # Calculate points for the arrowhead lines
-    arrow_angle = math.radians(15)  # 30 degree arrowhead
+    arrow_angle = math.radians(30)
     x3 = x2 - head_size * math.cos(angle - arrow_angle)
     y3 = y2 - head_size * math.sin(angle - arrow_angle)
     x4 = x2 - head_size * math.cos(angle + arrow_angle)
