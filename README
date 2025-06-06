@@ -1,0 +1,11 @@
+# vfield
+
+vfield is a Python library for visualizing and manipulating vector fields. It is designed to be easy to use, flexible, and efficient, making it suitable for research, education, and engineering applications.
+
+## Features
+
+- Load and generate 2D/3D vector fields
+- Visualize vector fields using various plotting backends (e.g., Matplotlib, Plotly)
+- Perform mathematical operations on vector fields (e.g., gradient, divergence, curl)
+- Export and import vector field data in common formats
+- Interactive exploration of vector fields
